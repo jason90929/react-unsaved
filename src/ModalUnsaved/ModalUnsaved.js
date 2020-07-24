@@ -62,7 +62,7 @@ var ModalUnsaved = createReactClass({
   onConfirm: function() {
     if (unsavedInstance.doAfterConfirmEvent instanceof Function) {
       unsavedInstance.doAfterConfirmEvent();
-      this.modalClose();
+      this.onClose();
       unsavedInstance.disable();
       this.props.modalClose();
     }
