@@ -1,26 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+var React = require('react');
+var PropTypes = require('prop-types');
 
-class BeforeUnloadHandler extends React.Component {
-  componentDidMount() {
+var BeforeUnloadHandler = React.createClass({
+  componentDidMount: function() {
     if (this.props.active) {
       window.addEventListener('beforeunload', this.confirmLeaveHandle);
     }
-  }
+  },
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate: function(prevProps, prevState) {
     if (this.props.active) {
       window.addEventListener('beforeunload', this.confirmLeaveHandle);
     } else {
       window.removeEventListener('beforeunload', this.confirmLeaveHandle);
     }
-  }
+  },
 
-  componentWillUnmount() {
+  componentWillUnmount: function() {
     window.removeEventListener('beforeunload', this.confirmLeaveHandle);
-  }
+  },
 
-  confirmLeaveHandle = (event) => {
+  confirmLeaveHandle: function(event) {
     const bindEvent = event || window.event;
     // For IE and Firefox
     if (bindEvent) {
@@ -28,23 +28,23 @@ class BeforeUnloadHandler extends React.Component {
     }
     // For Safari
     return this.props.message;
-  };
+  },
 
   render() {
     return null;
-  }
-}
+  },
 
-BeforeUnloadHandler.defaultProps = {
-  message: '',
-  active: false,
-};
+  getDefaultProps: function() {
+    return {
+      message: '',
+      active: false,
+    };
+  },
 
-BeforeUnloadHandler.propTypes = {
-  message: PropTypes.string,
-  active: PropTypes.bool,
-};
+  propTypes: {
+    message: PropTypes.string,
+    active: PropTypes.bool,
+  },
+});
 
-BeforeUnloadHandler.whyDidYouRender = true;
-
-export default BeforeUnloadHandler;
+module.exports = BeforeUnloadHandler;

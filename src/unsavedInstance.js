@@ -1,10 +1,10 @@
-import UNSAVED_CONSTANTS from './unsavedConstants';
-import observerInterface from './observerInterface';
+var UNSAVED_CONSTANTS = require('./unsavedConstants');
+var observerInterface = require('./observerInterface');
 
-let unsavedActive = false;
-let confirmEvent = _.noop;
+var unsavedActive = false;
+var confirmEvent = _.noop;
 
-const unsavedInstance = {
+var unsavedInstance = {
   enable() {
     unsavedActive = true;
     observerInterface.emit(UNSAVED_CONSTANTS.ACTION.UNSAVED_ACTIVE, true);
@@ -40,4 +40,4 @@ const unsavedInstance = {
   },
 };
 
-export default unsavedInstance;
+module.exports = unsavedInstance;

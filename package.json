@@ -17,6 +17,10 @@
   ],
   "devDependencies": {},
   "dependencies": {
-    "observer": "jason90929/observer"
+    "observer": "jason90929/observer",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0"
   }
 }
