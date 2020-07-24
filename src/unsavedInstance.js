@@ -2,7 +2,7 @@ var UNSAVED_CONSTANTS = require('./unsavedConstants');
 var observerInterface = require('./observerInterface');
 
 var unsavedActive = false;
-var confirmEvent = _.noop;
+var confirmEvent = () => {};
 
 var unsavedInstance = {
   enable() {
@@ -27,7 +27,10 @@ var unsavedInstance = {
     observerInterface.emit(UNSAVED_CONSTANTS.ACTION.MODAL_ACTIVE, false);
   },
 
-  setAfterConfirmEvent(event = () => {}) {
+  setAfterConfirmEvent(event) {
+    if (!event) {
+      event = function () {}
+    }
     confirmEvent = event;
   },
 

@@ -49,7 +49,7 @@ var ModalUnsaved = createReactClass({
   componentWillUnmount: function() {
     if (this.state.isConfirmLeaveActive
       && !this.state.isModalUnsavedActive) {
-      this.confirmLeave();
+      this.onConfirm();
     }
     observerInterface.unsubscribe(UNSAVED_CONSTANTS.ACTION.UNSAVED_ACTIVE);
     observerInterface.unsubscribe(UNSAVED_CONSTANTS.ACTION.MODAL_ACTIVE);
@@ -97,6 +97,7 @@ var ModalUnsaved = createReactClass({
   },
 
   propTypes: {
+    children: PropTypes.func.isRequired,
     message: PropTypes.string,
     history: PropTypes.shape({
       listen: PropTypes.func,
