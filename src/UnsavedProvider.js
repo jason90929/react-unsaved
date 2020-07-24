@@ -65,4 +65,4 @@ var UnsavedProvider = createReactClass({
   },
 });
 
-export default withRouter(UnsavedProvider);
+module.exports = withRouter(UnsavedProvider);
