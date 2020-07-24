@@ -1,0 +1,22 @@
+{
+  "name": "observer",
+  "version": "1.0.0",
+  "description": "Observer for listening some registered events that trigger React/Vue methods",
+  "main": "index.js",
+  "author": "Jason Tseng",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jason90929/observer.git"
+  },
+  "scripts": {
+  },
+  "keywords": [
+    "observer",
+    "react",
+    "vue",
+    "event-bus"
+  ],
+  "devDependencies": {
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "react-unsaved",
+  "version": "1.0.0",
+  "description": "React use browser previous page, button click, refresh page or close window, trigger confirm message",
+  "main": "index.js",
+  "author": "Jason Tseng",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jason90929/react-unsaved.git"
+  },
+  "scripts": {},
+  "keywords": [
+    "unsaved",
+    "beforeUnload",
+    "react"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "observer": "jason90929/observer"
+  }
+}
