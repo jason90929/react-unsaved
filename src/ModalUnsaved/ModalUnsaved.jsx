@@ -19,15 +19,16 @@ var ModalUnsaved = createReactClass({
   },
 
   componentDidMount: function() {
+    var self = this;
     observerInterface.subscribe(UNSAVED_CONSTANTS.ACTION.UNSAVED_ACTIVE, function(bool) {
-      this.setState(function(prevState) {
+      self.setState(function(prevState) {
         return {
           isConfirmLeaveActive: bool,
         };
       });
     });
     observerInterface.subscribe(UNSAVED_CONSTANTS.ACTION.MODAL_ACTIVE, function(bool) {
-      this.setState(function(prevState) {
+      self.setState(function(prevState) {
         return {
           isModalUnsavedActive: bool,
         };

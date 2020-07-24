@@ -22,7 +22,7 @@ var BeforeUnloadHandler = createReactClass({
   },
 
   confirmLeaveHandle: function(event) {
-    const bindEvent = event || window.event;
+    var bindEvent = event || window.event;
     // For IE and Firefox
     if (bindEvent) {
       bindEvent.returnValue = this.props.message;

@@ -8,10 +8,8 @@ var withRouter = reactRouter.withRouter;
 
 var UnsavedProvider = createReactClass({
   getChildrenClick: function () {
-    const {
-      children,
-      history,
-    } = this.props;
+    var children = this.props.children;
+    var history = this.props.history;
     if (children.props.onClick) {
       return children.props.onClick;
     }
@@ -29,7 +27,7 @@ var UnsavedProvider = createReactClass({
     event.stopPropagation();
     event.preventDefault();
 
-    const childrenClick = this.getChildrenClick();
+    var childrenClick = this.getChildrenClick();
     if (unsavedInstance.getUnsavedStatus()) {
       unsavedInstance.showModal();
       unsavedInstance.setAfterConfirmEvent(function() {
