@@ -2,10 +2,11 @@ var React = require('react');
 var PropTypes = require('prop-types');
 var reactRouter = require('react-router-dom');
 var unsavedInstance = require('./unsavedInstance');
+var createReactClass = require('create-react-class');
 
 var withRouter = reactRouter.withRouter;
 
-var UnsavedProvider = React.createClass({
+var UnsavedProvider = createReactClass({
   getChildrenClick: function () {
     const {
       children,

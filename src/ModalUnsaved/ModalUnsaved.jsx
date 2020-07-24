@@ -1,12 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Prompt, withRouter } from 'react-router';
-import UNSAVED_CONSTANTS from '../unsavedConstants';
-import unsavedInstance from '../unsavedInstance';
-import observerInterface from '../observerInterface';
-import BeforeUnloadHandler from './BeforeUnloadHandler';
+var React = require('react');
+var PropTypes = require('prop-types');
+var reactRouter = require('react-router');
+var UNSAVED_CONSTANTS = require('../unsavedConstants');
+var unsavedInstance = require('../unsavedInstance');
+var observerInterface = require('../observerInterface');
+var BeforeUnloadHandler = require('./BeforeUnloadHandler');
+var createReactClass = require('create-react-class');
 
-var ModalUnsaved = React.createClass({
+var Prompt = reactRouter.Prompt;
+var withRouter = reactRouter.withRouter;
+
+var ModalUnsaved = createReactClass({
   getInitialState: function() {
     return {
       isConfirmLeaveActive: false, // 是否要出現確認離開

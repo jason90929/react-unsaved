@@ -1,7 +1,8 @@
 var React = require('react');
 var PropTypes = require('prop-types');
+var createReactClass = require('create-react-class');
 
-var BeforeUnloadHandler = React.createClass({
+var BeforeUnloadHandler = createReactClass({
   componentDidMount: function() {
     if (this.props.active) {
       window.addEventListener('beforeunload', this.confirmLeaveHandle);
