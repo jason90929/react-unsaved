@@ -70,18 +70,20 @@ var ModalUnsaved = createReactClass({
 
   render: function() {
     return React.createElement(React.Fragment, null,
-      React.createElement(BeforeUnloadHandler, {
-        active: this.state.isConfirmLeaveActive,
-      }, null),
-      React.createElement(Prompt, {
-        when: this.state.isConfirmLeaveActive && !this.state.isModalUnsavedActive,
-        message: this.props.message,
-      }, null),
-      this.props.children(
-        this.onClose,
-        this.onConfirm,
-        this.props.message,
-      ),
+      [
+        React.createElement(BeforeUnloadHandler, {
+          active: this.state.isConfirmLeaveActive,
+        }, null),
+        React.createElement(Prompt, {
+          when: this.state.isConfirmLeaveActive && !this.state.isModalUnsavedActive,
+          message: this.props.message,
+        }, null),
+        this.props.children(
+          this.onClose,
+          this.onConfirm,
+          this.props.message,
+        ),
+      ],
     );
   },
 
