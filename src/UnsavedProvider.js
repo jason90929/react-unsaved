@@ -65,4 +65,10 @@ var UnsavedProvider = createReactClass({
   },
 });
 
+if (!withRouter) {
+  withRouter = function (Component) {
+    return Component;
+  }
+}
+
 module.exports = withRouter(UnsavedProvider);
