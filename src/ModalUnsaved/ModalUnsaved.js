@@ -71,8 +71,6 @@ var ModalUnsaved = createReactClass({
   },
 
   render: function() {
-    console.log('render', this.props);
-
     return React.createElement(React.Fragment, null,
       React.createElement(BeforeUnloadHandler, {
         active: this.state.isConfirmLeaveActive,
