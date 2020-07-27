@@ -21,6 +21,7 @@
   },
   "bundledDependencies": [
     "create-react-class",
+    "history",
     "prop-types",
     "react",
     "react-router",

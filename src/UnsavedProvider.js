@@ -1,21 +1,19 @@
 var React = require('react');
 var PropTypes = require('prop-types');
-var reactRouter = require('react-router-dom');
+var reactRouterDOM = require('react-router-dom');
 var unsavedInstance = require('./unsavedInstance');
 var createReactClass = require('create-react-class');
-
-var withRouter = reactRouter.withRouter;
 
 var UnsavedProvider = createReactClass({
   getChildrenClick: function () {
     var children = this.props.children;
-    var history = this.props.history;
+    var navigate = reactRouterDOM.useNavigate();
     if (children.props.onClick) {
       return children.props.onClick;
     }
     if (children.props.to) {
       return function() {
-        history.push(children.props.to);
+        navigate(children.props.to);
       };
     }
     return function () {
@@ -51,24 +49,14 @@ var UnsavedProvider = createReactClass({
   getDefaultProps: function() {
     return {
       children: null,
-      history: {
-        push: function() {},
-      }, // From withRouter()
+      navigate: function() {},
     };
   },
 
   propTypes: {
     children: PropTypes.node,
-    history: PropTypes.shape({
-      push: PropTypes.func,
-    }), // From withRouter()
+    navigate: PropTypes.func,
   },
 });
 
-if (!withRouter) {
-  withRouter = function (Component) {
-    return Component;
-  }
-}
-
-module.exports = withRouter(UnsavedProvider);
+module.exports = UnsavedProvider;

@@ -1,16 +1,17 @@
 var React = require('react');
 var PropTypes = require('prop-types');
-var reactRouter = require('react-router');
+var reactRouterDOM = require('react-router-dom');
 var UNSAVED_CONSTANTS = require('../unsavedConstants');
 var unsavedInstance = require('../unsavedInstance');
 var observerInterface = require('../observerInterface');
 var BeforeUnloadHandler = require('./BeforeUnloadHandler');
 var createReactClass = require('create-react-class');
+var history = require('history/browser');
 
-var Prompt = reactRouter.Prompt;
-var withRouter = reactRouter.withRouter;
+var Prompt = reactRouterDOM.Prompt;
 
 var ModalUnsaved = createReactClass({
+  unlisten: function() {},
   getInitialState: function() {
     return {
       isConfirmLeaveActive: false, // 是否要出現確認離開
@@ -34,7 +35,7 @@ var ModalUnsaved = createReactClass({
         };
       });
     });
-    this.props.history.listen(function(location, action) {
+    this.unlisten = history.default.listen(function(location, action) {
       // For after <Prompt> event
       unsavedInstance.disable();
     });
@@ -53,6 +54,7 @@ var ModalUnsaved = createReactClass({
     }
     observerInterface.unsubscribe(UNSAVED_CONSTANTS.ACTION.UNSAVED_ACTIVE);
     observerInterface.unsubscribe(UNSAVED_CONSTANTS.ACTION.MODAL_ACTIVE);
+    this.unlisten();
   },
 
   onClose: function() {
@@ -69,30 +71,27 @@ var ModalUnsaved = createReactClass({
   },
 
   render: function() {
+    console.log('render', this.props);
+
     return React.createElement(React.Fragment, null,
-      [
-        React.createElement(BeforeUnloadHandler, {
-          active: this.state.isConfirmLeaveActive,
-        }, null),
-        React.createElement(Prompt, {
-          when: this.state.isConfirmLeaveActive && !this.state.isModalUnsavedActive,
-          message: this.props.message,
-        }, null),
-        this.props.children(
-          this.onClose,
-          this.onConfirm,
-          this.props.message,
-        ),
-      ],
+      React.createElement(BeforeUnloadHandler, {
+        active: this.state.isConfirmLeaveActive,
+      }, null),
+      React.createElement(Prompt, {
+        when: this.state.isConfirmLeaveActive && !this.state.isModalUnsavedActive,
+        message: this.props.message,
+      }, null),
+      this.props.children(
+        this.onClose,
+        this.onConfirm,
+        this.props.message,
+      ),
     );
   },
 
   getDefaultProps: function() {
     return {
       message: 'Are you sure you want to leave page without saving?',
-      history: {
-        listen: function() {},
-      },
       modalShow: function() {},
       modalClose: function() {},
     };
@@ -101,9 +100,6 @@ var ModalUnsaved = createReactClass({
   propTypes: {
     children: PropTypes.func.isRequired,
     message: PropTypes.string,
-    history: PropTypes.shape({
-      listen: PropTypes.func,
-    }),
     modalShow: PropTypes.func,
     modalClose: PropTypes.func,
   },
@@ -129,4 +125,4 @@ Example usage:
 </ModalUnsaved>
 */
 
-module.exports = withRouter(ModalUnsaved);
+module.exports = ModalUnsaved;
