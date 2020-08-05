@@ -1,9 +1,6 @@
 # react-unsaved
 React use browser previous page, button click, refresh page or close window, trigger confirm message
 
-![Leave with button event](https://jason-tseng.s3-ap-northeast-1.amazonaws.com/leave-with-button-event.gif)
-![Leave with router change](https://jason-tseng.s3-ap-northeast-1.amazonaws.com/leave-with-router-change.gif)
-
 If your react-router is version 5, just use master branch directly; If it's v6, you can checkout branch into feature/v6
 
 ```
