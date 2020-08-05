@@ -1,6 +1,6 @@
 {
   "name": "react-unsaved",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React use browser previous page, button click, refresh page or close window, trigger confirm message",
   "main": "index.js",
   "author": "Jason Tseng",
@@ -18,10 +18,12 @@
   "devDependencies": {},
   "dependencies": {
     "create-react-class": "^15.6.3",
-    "observer": "jason90929/observer",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
-  }
+    "observer": "jason90929/observer"
+  },
+  "bundledDependencies": [
+    "prop-types",
+    "react",
+    "react-router",
+    "react-router-dom"
+  ]
 }
