@@ -1,6 +1,9 @@
 # react-unsaved
 React use browser previous page, button click, refresh page or close window, trigger confirm message
 
+![Leave with button event](https://jason-tseng.s3-ap-northeast-1.amazonaws.com/leave-with-button-event.gif)
+![Leave with router change](https://jason-tseng.s3-ap-northeast-1.amazonaws.com/leave-with-router-change.gif)
+
 If your react-router is version 5, just use master branch directly; If it's v6, you can checkout branch into feature/v6
 
 ```
@@ -54,12 +57,12 @@ class ModalUnsavedConfirm extends React.Component {
   render() {
     return (
       <Modal
-        title="確認離開？"
+        title="Confirm leave?"
         visible={this.state.visible}
         onOk={this.props.onConfirm}
         onCancel={this.onClose}
-        okText="確認"
-        cancelText="關閉"
+        okText="Confirm"
+        cancelText="Close"
         zIndex="1005" // Should higher than all other modals
       >
         {this.props.children}
