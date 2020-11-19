@@ -20,10 +20,10 @@
     "create-react-class": "^15.6.3",
     "observer": "jason90929/observer"
   },
-  "bundledDependencies": [
-    "prop-types",
-    "react",
-    "react-router",
-    "react-router-dom"
-  ]
+  "peerDependencies": {
+    "prop-types": "^15",
+    "react": "^16 || ^17",
+    "react-router": "^5",
+    "react-router-dom": "^5"
+  }
 }
