@@ -1,6 +1,6 @@
 {
   "name": "react-unsaved",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React use browser previous page, button click, refresh page or close window, trigger confirm message",
   "main": "index.js",
   "author": "Jason Tseng",
