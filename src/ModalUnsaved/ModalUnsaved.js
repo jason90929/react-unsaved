@@ -11,7 +11,6 @@ var history = require('history/browser');
 var Prompt = reactRouterDOM.Prompt;
 
 var ModalUnsaved = createReactClass({
-  unlisten: function() {},
   getInitialState: function() {
     return {
       isConfirmLeaveActive: false, // 是否要出現確認離開
@@ -35,10 +34,6 @@ var ModalUnsaved = createReactClass({
         };
       });
     });
-    this.unlisten = history.default.listen(function(location, action) {
-      // For after <Prompt> event
-      unsavedInstance.disable();
-    });
   },
 
   componentDidUpdate: function(prevProps, prevState, snapshot) {
@@ -54,7 +49,7 @@ var ModalUnsaved = createReactClass({
     }
     observerInterface.unsubscribe(UNSAVED_CONSTANTS.ACTION.UNSAVED_ACTIVE);
     observerInterface.unsubscribe(UNSAVED_CONSTANTS.ACTION.MODAL_ACTIVE);
-    this.unlisten();
+    unsavedInstance.disable();
   },
 
   onClose: function() {
